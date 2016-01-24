@@ -1,23 +1,22 @@
 gem 'minitest', '>= 5.0.0'
 require 'minitest/autorun'
-require 'minitest/pride'
 require_relative 'pyramid'
+require 'pry'
 
-class AlphabetPyramidTest < Minitest::Test
-  def does_not_get_numbers
-    #
+class PyramidTest < Minitest::Test
+
+  def test_one_level_pyramid
+    output = capture_io do
+      Pyramid.make_first_quarter_of_diamond('A')
+    end
+    # binding.pry
+    # assert_includes?(output.join, 'A')
   end
 
-  def gets_letters_only
-  end
-
-  def output_is_uppercase
-  end
-
-  def does_not_get_invalid_input
-  #   return "INVALID INPUT"
-  end
-
-
-
+  # def test_two_level_for_first_quarterfirst_quarter
+  #   assert_equal '
+  #                  A
+  #                 B B
+  #                  A', Pyramid.make_first_quarter_of_diamond('B')
+  # end
 end
