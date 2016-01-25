@@ -1,7 +1,12 @@
 class Pyramid
+  def make_diamond(letter)
+    @letter = letter
+    left_half_of_diamond
+    right_half_of_diamond
+  end
 
-  def self.left_half_of_diamond(letter)
-    @letters = ('A'..letter).to_a
+  def self.left_half_of_diamond
+    @letters = ('A'..@letter).to_a
     @number_of_rows = @letters.count
 
     1.upto(@number_of_rows) do |i|
@@ -16,8 +21,8 @@ class Pyramid
     end
   end
 
-  def self.right_half_of_diamond(letter)
-    @letters = ('A'..letter).to_a
+  def self.right_half_of_diamond
+    @letters = ('A'..@letter).to_a
     @number_of_rows = @letters.count
 
     (@number_of_rows-1).downto(2) do |i|
