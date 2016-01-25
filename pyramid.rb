@@ -1,39 +1,18 @@
 class Pyramid
-  def make_diamond(letter)
-    @letter = letter
-    left_half_of_diamond
-    right_half_of_diamond
+
+
+  def top_half_of_diamond(letter)
+    letters = ('A'..letter).to_a
+    spaces = (0..(letters.count - 1 )).to_a
+
+    first_quarter = Hash[spaces.reverse.zip(letters)]
+    first_quarter.each {|key, value| puts ('_' * "#{key}".to_i) + "#{value}" }
+
+    third_quarter = Hash[spaces.zip(letters.reverse)]
+
+    second_quarter = Hash[spaces.reverse.zip(letters)]
+    fourth_quarter = Hash[spaces.reverse.zip(letters.reverse)]
   end
 
-  def self.left_half_of_diamond
-    @letters = ('A'..@letter).to_a
-    @number_of_rows = @letters.count
 
-    1.upto(@number_of_rows) do |i|
-      spaces = ' ' * (@number_of_rows-i)
-      first_quarter_letter = @letters[i-1]
-      puts spaces + first_quarter_letter + spaces
-    end
-    (@number_of_rows-1).downto(1) do |i|
-      spaces = ' ' * (@number_of_rows-i)
-      third_quarter_letter = @letters[i-1]
-      puts spaces + third_quarter_letter + spaces
-    end
-  end
-
-  def self.right_half_of_diamond
-    @letters = ('A'..@letter).to_a
-    @number_of_rows = @letters.count
-
-    (@number_of_rows-1).downto(2) do |i|
-      spaces = ' ' * (@number_of_rows-i)
-      first_quarter_letter = @letters[@number_of_rows-i]
-      puts spaces + first_quarter_letter + spaces
-    end
-    1.upto(@number_of_rows-1) do |i|
-      spaces = ' ' * (@number_of_rows-i)
-      third_quarter_letter = @letters[@number_of_rows-i]
-      puts spaces + third_quarter_letter + spaces
-    end
-  end
 end
