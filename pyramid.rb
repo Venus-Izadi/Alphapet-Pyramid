@@ -1,8 +1,12 @@
 class Pyramid
 
   def initialize(letter)
-   @letters = ('A'..letter).to_a
-   @spaces = (0..(@letters.count - 1 )).to_a
+   begin
+     @letters = ('A'..letter.upcase).to_a
+     @spaces = (0..(@letters.count - 1 )).to_a
+   rescue
+      raise 'Invalid input'
+   end
   end
 
   def draw_diamond
@@ -25,9 +29,9 @@ class Pyramid
     end
   end
 
-  def make_line(i, quarter_one)
-    spaces = quarter_one.keys[i]
-    letter = quarter_one.values[i]
+  def make_line(nth_letter, quarter)
+    spaces = quarter.keys[nth_letter]
+    letter = quarter.values[nth_letter]
     print (' ' * spaces) + letter + ' ' * (@letters.count - spaces -1)
   end
 end
